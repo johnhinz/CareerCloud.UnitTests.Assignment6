@@ -475,7 +475,7 @@ namespace CareerCloud.UnitTests.Assignment6
         private void SecurityLoginRoleAdd()
         {
             SecurityLoginsRoleController controller = new SecurityLoginsRoleController();
-            IHttpActionResult result = controller.PostSecurityLoginRole(new SecurityLoginsRolePoco[] { _securityLoginRole });
+            IHttpActionResult result = controller.PostSecurityLoginsRole(new SecurityLoginsRolePoco[] { _securityLoginRole });
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
@@ -489,7 +489,7 @@ namespace CareerCloud.UnitTests.Assignment6
         private void SecurityLoginLogAdd()
         {
             SecurityLoginsLogController controller = new SecurityLoginsLogController();
-            IHttpActionResult result = controller.PostSecurityLoginLog(new SecurityLoginsLogPoco[] { _securityLoginLog });
+            IHttpActionResult result = controller.PostSecurityLoginsLog(new SecurityLoginsLogPoco[] { _securityLoginLog });
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
@@ -523,8 +523,8 @@ namespace CareerCloud.UnitTests.Assignment6
 
         private void CompanyJobDescriptionAdd()
         {
-            CompanyJobsDescriptionController controller = new CompanyJobsDescriptionController();
-            IHttpActionResult result = controller.PostCompanyJobsDescription(new CompanyJobDescriptionPoco[] { _companyJobDescription });
+            CompanyJobDescriptionController controller = new CompanyJobDescriptionController();
+            IHttpActionResult result = controller.PostCompanyJobDescription(new CompanyJobDescriptionPoco[] { _companyJobDescription });
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
@@ -680,7 +680,7 @@ namespace CareerCloud.UnitTests.Assignment6
         private void SecurityLoginLogCheck()
         {
             SecurityLoginsLogController controller = new SecurityLoginsLogController();
-            var result = controller.GetSecurityLoginLog(_securityLoginLog.Id);
+            var result = controller.GetSecurityLoginsLog(_securityLoginLog.Id);
             var contentResult = result as OkNegotiatedContentResult<SecurityLoginsLogPoco>;
 
             Assert.IsNotNull(contentResult);
@@ -766,8 +766,8 @@ namespace CareerCloud.UnitTests.Assignment6
 
         private void CompanyJobDescriptionCheck()
         {
-            CompanyJobsDescriptionController controller = new CompanyJobsDescriptionController();
-            var result = controller.GetCompanyJobsDescription(_companyJobDescription.Id);
+            CompanyJobDescriptionController controller = new CompanyJobDescriptionController();
+            var result = controller.GetCompanyJobDescription(_companyJobDescription.Id);
             var contentResult = result as OkNegotiatedContentResult<CompanyJobDescriptionPoco>;
 
             Assert.IsNotNull(contentResult);
@@ -918,8 +918,8 @@ namespace CareerCloud.UnitTests.Assignment6
         {
             _companyJobDescription.JobDescriptions = Truncate(Faker.Lorem.Paragraph(), 999);
             _companyJobDescription.JobName = Truncate(Faker.Lorem.Sentence(), 99);
-            CompanyJobsDescriptionController controller = new CompanyJobsDescriptionController();
-            IHttpActionResult result = controller.PutCompanyJobsDescription(new CompanyJobDescriptionPoco[] { _companyJobDescription });
+            CompanyJobDescriptionController controller = new CompanyJobDescriptionController();
+            IHttpActionResult result = controller.PutCompanyJobDescription(new CompanyJobDescriptionPoco[] { _companyJobDescription });
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
@@ -979,7 +979,7 @@ namespace CareerCloud.UnitTests.Assignment6
             _securityLoginLog.LogonDate = Faker.Date.PastWithTime();
             _securityLoginLog.SourceIP = Faker.Internet.IPv4().PadRight(15);
             SecurityLoginsLogController controller = new SecurityLoginsLogController();
-            IHttpActionResult result = controller.PutSecurityLoginLog(new SecurityLoginsLogPoco[] { _securityLoginLog });
+            IHttpActionResult result = controller.PutSecurityLoginsLog(new SecurityLoginsLogPoco[] { _securityLoginLog });
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
@@ -1121,11 +1121,11 @@ namespace CareerCloud.UnitTests.Assignment6
 
         private void CompanyJobDescRemove()
         {
-            CompanyJobsDescriptionController controller = new CompanyJobsDescriptionController();
-            var result = controller.DeleteCompanyJobsDescription(new CompanyJobDescriptionPoco[] { _companyJobDescription });
+            CompanyJobDescriptionController controller = new CompanyJobDescriptionController();
+            var result = controller.DeleteCompanyJobDescription(new CompanyJobDescriptionPoco[] { _companyJobDescription });
             Assert.IsInstanceOfType(result, typeof(OkResult));
 
-            result = controller.GetCompanyJobsDescription(_companyJobDescription.Id);
+            result = controller.GetCompanyJobDescription(_companyJobDescription.Id);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
@@ -1183,10 +1183,10 @@ namespace CareerCloud.UnitTests.Assignment6
         private void SecurityLoginLogRemove()
         {
             SecurityLoginsLogController controller = new SecurityLoginsLogController();
-            IHttpActionResult result = controller.DeleteSecurityLoginLog(new SecurityLoginsLogPoco[] { _securityLoginLog });
+            IHttpActionResult result = controller.DeleteSecurityLoginsLog(new SecurityLoginsLogPoco[] { _securityLoginLog });
             Assert.IsInstanceOfType(result, typeof(OkResult));
 
-            result = controller.GetSecurityLoginLog(_securityLoginLog.Id);
+            result = controller.GetSecurityLoginsLog(_securityLoginLog.Id);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
@@ -1203,7 +1203,7 @@ namespace CareerCloud.UnitTests.Assignment6
         private void SecurityLoginRoleRemove()
         {
             SecurityLoginsRoleController controller = new SecurityLoginsRoleController();
-            IHttpActionResult result = controller.DeleteSecurityLoginRole(new SecurityLoginsRolePoco[] { _securityLoginRole });
+            IHttpActionResult result = controller.DeleteSecurityLoginsRole(new SecurityLoginsRolePoco[] { _securityLoginRole });
             Assert.IsInstanceOfType(result, typeof(OkResult));
 
             result = controller.GetSecurityLoginsRole(_securityLoginRole.Id);
